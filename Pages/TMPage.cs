@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SeleniumExtras.WaitHelpers;
 using OpenQA.Selenium.Support.UI;
 using TurnUpPortalRegression.Utilities;
+using NUnit.Framework;
 
 namespace TurnUpPortalRegression.Pages
 {
@@ -78,14 +79,16 @@ namespace TurnUpPortalRegression.Pages
             goToLastPage.Click();
 
             IWebElement newCode = driver.FindElement(byNewCode);
-            if (newCode.Text == "JayCode001")
-            {
-                Console.WriteLine("Create new Time and Material item successfully.  Test Passed!");
-            }
-            else
-            {
-                Console.WriteLine("Create new Time and Material item Failded. Test Failed!");
-            }
+            Assert.That(newCode.Text == "JayCode001", "Create new Time and Material item Failded. Test Failed!");
+
+            //if (newCode.Text == "JayCode001")
+            //{
+            //    Console.WriteLine("Create new Time and Material item successfully.  Test Passed!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Create new Time and Material item Failded. Test Failed!");
+            //}
         }
         public void EditTimeRecord(IWebDriver driver)
         {
@@ -142,14 +145,15 @@ namespace TurnUpPortalRegression.Pages
             WaitUtils.WaitToBeVisible(driver, byGroupingHeader, 6);
 
             IWebElement newCode = driver.FindElement(byNewCode);
-            if (newCode.Text == "JayCode002")
-            {
-                Console.WriteLine("Edit new created record successfully. Test Passed!");
-            }
-            else
-            {
-                Console.WriteLine("Edit new created record Failded. Test Failed!");
-            }
+            Assert.That(newCode.Text == "JayCode002", "Edit new created record Failded. Test Failed!");
+            //if (newCode.Text == "JayCode002")
+            //{
+            //    Console.WriteLine("Edit new created record successfully. Test Passed!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Edit new created record Failded. Test Failed!");
+            //}
 
         }
 
@@ -177,14 +181,16 @@ namespace TurnUpPortalRegression.Pages
             goToLastPage.Click();
 
             IWebElement newCode = driver.FindElement(byNewCode);
-            if (newCode.Text != "JayCode002")
-            {
-                Console.WriteLine("Delete new created record successfully. Test Passed!");
-            }
-            else
-            {
-                Console.WriteLine("Delete new created record Failded. Test Failed!");
-            }
+
+            Assert.That(newCode.Text != "JayCode002", "Delete new created record Failded. Test Failed!");
+            //if (newCode.Text != "JayCode002")
+            //{
+            //    Console.WriteLine("Delete new created record successfully. Test Passed!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Delete new created record Failded. Test Failed!");
+            //}
 
         }
 

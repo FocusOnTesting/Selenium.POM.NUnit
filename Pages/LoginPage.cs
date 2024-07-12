@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,14 +35,16 @@ namespace TurnUpPortalRegression.Pages
 
             // check if user has logged in successfull
             IWebElement helloHari = driver.FindElement(byHello);
-            if (helloHari.Text == "Hello " + userName + "!")
-            {
-                Console.WriteLine("User has logged in Successfully. Test Passed!");
-            }
-            else
-            {
-                Console.WriteLine("User has not logged in. Test Failed!");
-            }
+
+            Assert.That(helloHari.Text == "Hello " + userName + "!", "User has not logged in. Test Failed!");
+            //if (helloHari.Text == "Hello " + userName + "!")
+            //{
+            //    Console.WriteLine("User has logged in Successfully. Test Passed!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("User has not logged in. Test Failed!");
+            //}
         }
 
     }
