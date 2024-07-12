@@ -78,7 +78,7 @@ namespace TurnUpPortalRegression.Tests
         [TearDown]
         public void TearDownTests()
         {
-            //driver.Close();
+            driver.Close();
         }
     }
 }
