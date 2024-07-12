@@ -32,17 +32,6 @@ namespace TurnUpPortalRegression.Pages
 
         public void CreateTimeRecord(IWebDriver driver)
         {
-            //WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
-
-            IWebElement administrationTab = driver.FindElement(byAdministrationTab);
-            //Console.WriteLine(byAdministrationTab.ToString()); 
-            administrationTab.Click();
-
-            //IWebElement timeAndMaterialOption = wait.Until(ExpectedConditions.ElementToBeClickable(byTimeAndMaterialOption));
-            IWebElement timeAndMaterialOption = driver.FindElement(byTimeAndMaterialOption);
-            WaitUtils.WaitToBeClickable(driver, byTimeAndMaterialOption, 6);
-            timeAndMaterialOption.Click();
-
             //IWebElement createNewButton = wait.Until(ExpectedConditions.ElementToBeClickable(byCreateNewButton));
             IWebElement createNewButton = driver.FindElement(byCreateNewButton);
             WaitUtils.WaitToBeClickable(driver, byCreateNewButton, 6);
@@ -101,6 +90,9 @@ namespace TurnUpPortalRegression.Pages
         public void EditTimeRecord(IWebDriver driver)
         {
             //var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
+            IWebElement goToLastPage = driver.FindElement(byGoToLastPage);
+            WaitUtils.WaitToBeClickable(driver, byGoToLastPage, 6);
+            goToLastPage.Click();
 
             //IWebElement editButton = wait.Until(ExpectedConditions.ElementToBeClickable(byEditButton));
             IWebElement editButton = driver.FindElement(byEditButton);
@@ -143,9 +135,11 @@ namespace TurnUpPortalRegression.Pages
             WaitUtils.WaitToBeVisible(driver, byGroupingHeader, 6);
 
             //IWebElement goToLastPage = wait.Until(ExpectedConditions.ElementToBeClickable(byGoToLastPage));
-            IWebElement goToLastPage = driver.FindElement(byGoToLastPage);
+            goToLastPage = driver.FindElement(byGoToLastPage);
             WaitUtils.WaitToBeClickable(driver, byGoToLastPage, 6);
             goToLastPage.Click();
+
+            WaitUtils.WaitToBeVisible(driver, byGroupingHeader, 6);
 
             IWebElement newCode = driver.FindElement(byNewCode);
             if (newCode.Text == "JayCode002")
@@ -154,7 +148,7 @@ namespace TurnUpPortalRegression.Pages
             }
             else
             {
-                Console.WriteLine("Edit new created record  Failded. Test Failed!");
+                Console.WriteLine("Edit new created record Failded. Test Failed!");
             }
 
         }
@@ -162,7 +156,10 @@ namespace TurnUpPortalRegression.Pages
         public void DeleteTimeRecord(IWebDriver driver)
         {
             //WebDriverWait wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
-
+            IWebElement goToLastPage = driver.FindElement(byGoToLastPage);
+            WaitUtils.WaitToBeVisible(driver, byGoToLastPage, 6);
+            goToLastPage.Click();
+                        
             IWebElement deleteButton = driver.FindElement(byDeleteButton);
             deleteButton.Click();
 
@@ -175,11 +172,10 @@ namespace TurnUpPortalRegression.Pages
             WaitUtils.WaitToBeVisible(driver, byGroupingHeader, 6);
 
             //IWebElement goToLastPage = wait.Until(ExpectedConditions.ElementToBeClickable(byGoToLastPage));
-            IWebElement goToLastPage = driver.FindElement(byGoToLastPage);
+            goToLastPage = driver.FindElement(byGoToLastPage);
             WaitUtils.WaitToBeClickable(driver, byGoToLastPage, 6);
             goToLastPage.Click();
 
-            //Thread.Sleep(2000);
             IWebElement newCode = driver.FindElement(byNewCode);
             if (newCode.Text != "JayCode002")
             {
